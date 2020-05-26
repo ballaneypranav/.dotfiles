@@ -5,5 +5,9 @@
     ~/.bashrc: bashrc
     ~/.bash_logout: bash_logout
     ~/.gitconfig: gitconfig
+    ~/.quiltrc: quiltrc
+    ~/.quiltrc-dpkg: quiltrc-dpkg
+    ~/.reportbugrc: reportbugrc
+    ~/.zshrc: zshrc
 
 

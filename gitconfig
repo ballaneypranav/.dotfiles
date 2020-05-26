@@ -3,3 +3,9 @@
 	email = ballaneypranav@gmail.com
 [credential]
 	helper = cache --timeout=604800
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	cl = clone
