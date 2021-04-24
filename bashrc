@@ -128,14 +128,14 @@ export DATABASE_URL=postgres://dluzyprmlxkolg:c622f2cda3dd656296ba05dbdbd74752d4
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pranav/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/pranav/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/pranav/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pranav/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/pranav/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/pranav/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/pranav/anaconda3/bin:$PATH"
+        export PATH="/home/pranav/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -152,3 +152,8 @@ export aptest="autopkgtest . -- schroot unstable-amd64-sbuild"
 
 
 source /home/pranav/.config/broot/launcher/bash/br
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/pranav/.sdkman"
+[[ -s "/home/pranav/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pranav/.sdkman/bin/sdkman-init.sh"
+source "$HOME/.cargo/env"

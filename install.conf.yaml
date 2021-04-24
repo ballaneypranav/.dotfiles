@@ -7,7 +7,12 @@
     ~/.gitconfig: gitconfig
     ~/.quiltrc: quiltrc
     ~/.quiltrc-dpkg: quiltrc-dpkg
+    ~/.pylintrc: pylintrc
     ~/.reportbugrc: reportbugrc
+    ~/.sbuildrc: sbuildrc
     ~/.zshrc: zshrc
+    ~/.config/i3/config: i3config
+
+
 
 

@@ -1,10 +1,11 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/.local/lib:$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pranav/.oh-my-zsh"
 
 fpath+=('/usr/local/lib/node_modules/pure-prompt/functions')
+fpath+=$HOME/.zsh/pure
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -46,7 +47,7 @@ prompt pure
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -72,7 +73,7 @@ prompt pure
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found autojump zsh-autosuggestions k z)
+plugins=(git zsh-autosuggestions k z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,12 +107,25 @@ if [ -f ${HOME}/.zplug/init.zsh ]; then
     source ${HOME}/.zplug/init.zsh
 fi
 
-alias sai="sudo apt install"
-alias sar="sudo apt remove"
+function sai
+{
+  echo >> ~/code/debian-med/installs.log; 
+  date >> ~/code/debian-med/installs.log; 
+  pwd >> ~/code/debian-med/installs.log;
+  echo $1 >> ~/code/debian-med/installs.log;
+  echo >> ~/code/debian-med/installs.log; 
+  echo Logging this install, remember to uninstall when done!
+  sudo aptitude install $1  
+}
+alias sar="sudo aptitude remove"
 
 function mcd
 {
   command mkdir $1 && cd $1
+}
+
+function medclone {
+    cd ~/code/debian-med && mkdir $1 && cd $1 && git clone https://salsa.debian.org/med-team/$1.git && cd $1
 }
 
 alias aptest="autopkgtest . -- schroot unstable-amd64-sbuild"
@@ -120,26 +134,37 @@ DEBFULLNAME="Pranav Ballaney"
 export DEBEMAIL DEBFULLNAME
 
 
+alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
+complete -F _quilt_completion -o filenames dquilt
+
+# mc related
+# export HISTCONTROL=ignoreboth
+# . /usr/lib/mc/mc.sh
+
+function javarun {
+    rm *.class; javac $1.java && java $1
+}
+
+function vlog {
+  iverilog -o $1vp $1 && \
+  vvp $1vp
+}
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/pranav/.sdkman"
+[[ -s "/home/pranav/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pranav/.sdkman/bin/sdkman-init.sh"
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pranav/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/pranav/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/pranav/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pranav/anaconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/pranav/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/pranav/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/pranav/anaconda3/bin:$PATH"
+        export PATH="/home/pranav/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-conda deactivate
-
-alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
-complete -F _quilt_completion -o filenames dquilt
-
-# mc related
-export HISTCONTROL=ignoreboth
-. /usr/lib/mc/mc.sh
