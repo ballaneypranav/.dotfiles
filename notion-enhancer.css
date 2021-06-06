@@ -1,0 +1,18 @@
+/* ========== TABLE COLUMNS BELOW 100PX ========== */
+[data-block-id^='e6be0d44-c9f7-49e3-8889-f1fb82ce7454']
+  > [style^='display: flex; position: absolute; background: rgb(47, 52, 55); z-index: 82; height: 33px; color: rgba(255, 255, 255, 0.6);']
+  > div:nth-child(1)
+  > div:nth-child(COL_NUMBER)
+  > div:nth-child(1),
+[data-block-id^='e6be0d44-c9f7-49e3-8889-f1fb82ce7454']
+  > [style^='position: relative; min-width: calc(100% - 192px);']
+  > [data-block-id]
+  > div:nth-child(COL_NUMBER),
+[data-block-id^='e6be0d44-c9f7-49e3-8889-f1fb82ce7454'] > div:nth-child(5) > div:nth-child(COL_NUMBER) {
+  width: 32px !important;
+}
+[data-block-id^='e6be0d44-c9f7-49e3-8889-f1fb82ce7454']
+  [style^='position: absolute; top: 0px; left: 0px; pointer-events: none;']:not(.notion-presence-container) {
+  display: none;
+}
+

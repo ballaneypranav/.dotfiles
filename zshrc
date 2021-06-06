@@ -8,6 +8,9 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/.local/lib:$HOME/bin:/usr/local/bin:$PATH
 
+# add ncbi edirect to path
+export PATH="${PATH}:${HOME}/edirect"
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pranav/.oh-my-zsh"
 
@@ -54,7 +57,7 @@ autoload -U promptinit; promptinit
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -80,7 +83,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions k z fzf-z)
+plugins=(git zsh-autosuggestions z fzf-z vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,50 +128,47 @@ export DEBEMAIL DEBFULLNAME
 
 alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
 complete -F _quilt_completion -o filenames dquilt
-
-# mc related
-# export HISTCONTROL=ignoreboth
-# . /usr/lib/mc/mc.sh
-
-function javarun {
-    rm *.class; javac $1.java && java $1
-}
-
-function vlog {
-  iverilog -o $1vp $1 && \
-  vvp $1vp
-}
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/pranav/.sdkman"
-[[ -s "/home/pranav/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pranav/.sdkman/bin/sdkman-init.sh"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pranav/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pranav/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pranav/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pranav/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 alias q="exit"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # nnn
-export NNN_PLUG='z:fzz;d:diffs;m:mediainf;g:dragdrop;p:preview-tui-ext'
+export NNN_PLUG='z:fzz;d:diffs;m:mediainf;g:dragdrop;p:preview-tui'
 export NNN_BMS='c:~/code;d:~/Documents;D:~/Downloads/;s:/mnt/hdd/DC/Google Drive/BITS Academics/Sem 3-2;'
 export NNN_FIFO='/tmp/nnn.fifo'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# preview
+alias pip=pip3
 
+# Gromacs
+source /usr/local/gromacs/bin/GMXRC.zsh
 
-# autojump
-# . /usr/share/autojump/autojump.sh
+# alacritty
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# fix nocorrect aliases
+unsetopt correct
+
+# vim
+alias vim=nvim
+
+IFS=$'\n'
+for l in $(python3 ~/.config/quotes.py); do
+  printc 152 195 121 $l;
+done
+
+diskspace=$(\
+  df -l -h \
+  | grep -E 'dev/sd(a1|b4)' \
+  | sed -e 's/\/dev\/sdb4/SSD/g' \
+  | sed -e 's/\/dev\/sda1/HDD/g' \
+  | awk '{printf "%s %s ", $1, $4 }' \
+  | awk '{printf "%s %s, %s %s ", $1, $2, $3, $4 }'
+)
+
+echo
+printc -n -b 175 181 195 "Free space: "
+printc 175 181 195 ${diskspace}
+
+IFS=$' '

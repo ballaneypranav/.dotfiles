@@ -15,9 +15,28 @@
     ~/.config/i3status/config: i3status
     ~/.config/dunst/dunstrc: dunstrc
     ~/.config/rofi/config: rofi
+    ~/.config/alacritty/alacritty.yml: alacritty.yml
     ~/.Xresources: Xresources
+    ~/.vimrc: nvim/init.vim
+    ~/.config/nvim/init.vim: nvim/init.vim
+    ~/.config/nvim/plugins.vim: nvim/plugins.vim
+    ~/.config/nvim/settings.vim: nvim/settings.vim
+    ~/.config/nvim/bindings.vim: nvim/bindings.vim
+    ~/.config/nvim/lightline.vim: nvim/lightline.vim
+    ~/.config/nvim/rainbow.vim: nvim/rainbow.vim
+    ~/.config/nvim/coc.vim: nvim/coc.vim
+    ~/.config/nvim/signify.vim: nvim/signify.vim
+    ~/.config/nvim/sneak.vim: nvim/sneak.vim
+    ~/.config/nvim/fzf.vim: nvim/fzf.vim
+    ~/.config/nvim/whichkey.vim: nvim/whichkey.vim
+    ~/.config/nvim/quickscope.vim: nvim/quickscope.vim
+    ~/.config/nvim/floaterm.vim: nvim/floaterm.vim
+    ~/.config/nvim/hardmode.vim: nvim/hardmode.vim
+    ~/.config/nvim/start-screen.vim: nvim/start-screen.vim
+    ~/.config/nvim/themes/onedark.vim: nvim/themes/onedark.vim
     ~/.local/bin/volume: volume.sh
-    /etc/X11/xorg.conf: Xorg.conf
+    ~/.config/quotes.py: quotes.py
+    # /etc/X11/xorg.conf: Xorg.conf
 
 
 

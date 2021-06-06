@@ -116,44 +116,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-export ELECTRON_TRASH=gio
-
-alias python=python3
-alias cdopen='cd /mnt/E81070F31070CA58/DC/Open\ Courses'
-PROMPT_DIRTRIM=2
-export FLASK_APP=application.py
-export FLASK_DEBUG=1
-export DATABASE_URL=postgres://dluzyprmlxkolg:c622f2cda3dd656296ba05dbdbd74752d4951dc549f3991c2bfe99727be88132@ec2-54-221-212-126.compute-1.amazonaws.com:5432/debn8t25rmfi96
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/pranav/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/pranav/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/pranav/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/pranav/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-export PATH=/usr/local/cuda-8.0/bin${PATH:+:${PATH}}$ 
-export LD_LIBRARY_PATH=/usr/local/cuda-8.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-export DEBEMAIL=ballaneypranav@gmail.com
-export DEBFULLNAME='Pranav Ballaney'
-
-export aptest="autopkgtest . -- schroot unstable-amd64-sbuild"
-
-
-
-source /home/pranav/.config/broot/launcher/bash/br
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/pranav/.sdkman"
-[[ -s "/home/pranav/.sdkman/bin/sdkman-init.sh" ]] && source "/home/pranav/.sdkman/bin/sdkman-init.sh"
-source "$HOME/.cargo/env"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
+export PATH=${PATH}:/home/pranav/edirect
